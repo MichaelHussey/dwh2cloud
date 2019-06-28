@@ -1,7 +1,7 @@
 #/bin/bash
 if [ "$1" = "-d" ]
 then
-	URL=connectors/orders-source-connector
+	URL=connectors/orders-sink-connector1
 	METHOD=DELETE
 	curl -i -X $METHOD \
 	    -H "Accept:application/json" \
@@ -10,7 +10,7 @@ then
 else
 if [ "$1" = "-v" ]
 	then
-		URL=connector-plugins/SpoolDirCsvSourceConnector/config/validate
+		URL=connector-plugins/BigQuerySinkConnector/config/validate
 		METHOD=PUT
 		
 		curl -i -X $METHOD \
@@ -24,7 +24,7 @@ if [ "$1" = "-v" ]
 		curl -i -X $METHOD \
 		    -H "Accept:application/json" \
 		    -H  "Content-Type:application/json" \
-		    http://localhost:8083/$URL --data-binary "@$PWD/config/orders_file_source.properties"
+		    http://localhost:8083/$URL --data-binary "@$PWD/config/orders_bigquery_sink.properties"
 	fi
 fi
 	

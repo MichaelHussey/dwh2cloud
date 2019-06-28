@@ -53,6 +53,7 @@ services:
      - mi2:/usr/share/java/monitoring-interceptors/
      - ./connect-plugins/debezium-debezium-connector-postgresql:/usr/share/java/debezium
      - ./connect-plugins/jcustenborder-kafka-connect-spooldir:/usr/share/java/spooldir
+     - ./connect-plugins/wepay-kafka-connect-bigquery:/usr/share/java/bigquery
     environment:
       CONNECT_DEBUG: y
       KAFKA_DEBUG: y

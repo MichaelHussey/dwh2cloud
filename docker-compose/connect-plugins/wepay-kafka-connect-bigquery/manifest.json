@@ -1,0 +1,44 @@
+{
+  "name": "kafka-connect-bigquery",
+  "version": "1.1.0",
+  "title": "BigQuery Sink Connector",
+  "description": "A sink connector for writing to Google BigQuery, with support for automatic table creation and schema evolution.",
+  "documentation_url": "https://github.com/wepay/kafka-connect-bigquery/wiki",
+  "source_url": "https://github.com/wepay/kafka-connect-bigquery",
+  "logo": "assets/BigQuery.png",
+  "owner": {
+    "name": "WePay",
+    "username": "wepay",
+    "type": "organization",
+    "url": "https://go.wepay.com/"
+  },
+  "features": {
+    "confluent_control_center_integration": true,
+    "kafka_connect_api": true,
+    "single_message_transforms": true,
+    "supported_encodings": [
+      "any"
+    ]
+  },
+  "requirements": null,
+  "docker_image": null,
+  "license": [
+    {
+      "name": "Apache 2.0",
+      "url": "https://github.com/wepay/kafka-connect-bigquery/blob/master/LICENSE.md"
+    }
+  ],
+  "component_types": [
+    "sink"
+  ],
+  "tags": [
+    "google",
+    "cloud",
+    "platform",
+    "bigquery",
+    "nosql",
+    "data",
+    "warehouse",
+    "analytics"
+  ]
+}
