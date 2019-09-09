@@ -2,13 +2,13 @@
 version: '2'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:5.2.1
+    image: confluentinc/cp-zookeeper:5.4.0-beta1
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
-    image: confluentinc/cp-enterprise-kafka:5.2.1
+    image: confluentinc/cp-server:5.4.0-beta1
     ports:
       - '9092:9092'
     depends_on:
@@ -30,7 +30,7 @@ services:
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
   schema-registry:
-    image: confluentinc/cp-schema-registry:5.2.1
+    image: confluentinc/cp-schema-registry:5.4.0-beta1
     depends_on:
       - zookeeper
       - kafka
@@ -41,7 +41,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
 
   connect:
-    image: confluentinc/cp-kafka-connect:5.2.1
+    image: confluentinc/cp-kafka-connect:5.4.0-beta1
     hostname: connect
     container_name: connect
     ports:
@@ -88,7 +88,7 @@ services:
       - schema-registry
 
   control-center:
-    image: confluentinc/cp-enterprise-control-center:5.2.1
+    image: confluentinc/cp-enterprise-control-center:5.4.0-beta1
     hostname: control-center
     container_name: control-center
     depends_on:
@@ -116,7 +116,7 @@ services:
 
   # KSQL
   ksql-server:
-    image: confluentinc/cp-ksql-server:5.2.1
+    image: confluentinc/cp-ksql-server:5.4.0-beta1
     hostname: ksql-server
     container_name: ksql-server
     depends_on:
@@ -152,7 +152,7 @@ services:
      - ./customers.sql:/docker-entrypoint-initdb.d/z99_dump.sql
 
   ksql-cli:
-    image: confluentinc/cp-ksql-cli:5.2.1
+    image: confluentinc/cp-ksql-cli:5.4.0-beta1
     container_name: ksql-cli
     depends_on:
       - kafka
