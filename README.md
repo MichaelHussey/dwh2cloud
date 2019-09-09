@@ -19,3 +19,5 @@ Each table in the schema may be event-enabled (using Change Data Capture, or by 
 ![image](./images/ksql_pairwise_join.png)
 
 You may follow the [step-by-step guide](dwh2cloud.adoc), which is based on Docker (instead of your local Confluent Platform install).
+
+There's also a [slide-deck](./dwh2cloud.pptx) available.
