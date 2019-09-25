@@ -96,7 +96,7 @@ image:images/csv_input.png[Reading data from CSV file]
 To get started we use a https://www.confluent.io/hub/jcustenborder/kafka-connect-spooldir[SpoolDir] connector to 
 create the an initial topic from which we can create the main "table CDC" topics.
 This will also generate the schemas needed in SchemaRegistry. 
-This connector polls the data/in directory for *.csv files, sending them to Kafka. It uses 
+This connector polls the `data/in` directory for `*.csv` files, sending them to Kafka. It uses 
 the header line in the file to set field names in the schema.
 
 [source,bash]
@@ -116,9 +116,9 @@ CREATE STREAM orders_raw WITH (KAFKA_TOPIC='orders_raw', VALUE_FORMAT='AVRO');
 === Set up filter streams to generate the 
 == Preparing your Cloud DWH: Google BigQuery
 
-Create an empty DataSet on Google BigQuery
-Create a ServiceAccount on GCP and give it "BigQuery Editor" permission.
-Download your keyfile and store it in the data/keys directory, then set the following 
+. Create an empty DataSet on Google BigQuery.
+. Create a ServiceAccount on GCP and give it "BigQuery Editor" permission.
+. Download your keyfile and store it in the `data/keys` directory, then set the following 
 environment variables
 [source,bash]
 ----
@@ -162,6 +162,8 @@ CREATE STREAM CUSTOMERS_SRC_REKEY WITH (PARTITIONS=1) AS SELECT * FROM CUSTOMERS
 CREATE TABLE CUSTOMERS WITH (KAFKA_TOPIC='CUSTOMERS_SRC_REKEY', VALUE_FORMAT ='AVRO', KEY='ID');
 ----
 
+****
+Old stuff
 == Demo
 
 image:images/ksql-debezium-es.png[Kafka Connect / KSQL / Elasticsearch]
@@ -213,8 +215,6 @@ postgres=# select * from customers ;
 SELECT ID, FIRST_NAME, LAST_NAME, EMAIL FROM CUSTOMERS_SRC;
 ----
 
-****
-Old stuff
 === Show CDC in action
 
 
