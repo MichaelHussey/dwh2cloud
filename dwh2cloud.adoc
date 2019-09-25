@@ -16,7 +16,7 @@ c.10 minutes
 
 == Slides
 
-* ./dwh2cloud.pptx[Filling the gap between Third Normal Form and Big Data with PostgreSQL, Apache Kafka, and KSQL] by https://twitter.com/hussey_mic/[Mic Hussey]
+* link:./dwh2cloud.pptx[Filling the gap between Third Normal Form and Big Data with PostgreSQL, Apache Kafka, and KSQL] by https://twitter.com/hussey_mic/[Mic Hussey]
 
 == Pre-reqs
 
