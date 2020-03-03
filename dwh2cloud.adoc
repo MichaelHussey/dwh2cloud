@@ -86,7 +86,7 @@ docker-compose exec postgres bash -c 'psql --username postgres'
 ----
 Check that the source tables are created 
 [source,bash]
----
+----
 postgres=# \dt
            List of relations
  Schema |    Name    | Type  |  Owner   
@@ -99,7 +99,7 @@ postgres=# \dt
 (5 rows)
 
 postgres=# \q
----
+----
 
 
 == Creating the topics and creating Schemas
