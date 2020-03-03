@@ -85,7 +85,8 @@ docker-compose exec ksql-cli ksql http://ksql-server:8088
 docker-compose exec postgres bash -c 'psql --username postgres'
 ----
 Check that the source tables are created 
-[source,bash]---
+[source,bash]
+---
 postgres=# \dt
            List of relations
  Schema |    Name    | Type  |  Owner   
