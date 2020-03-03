@@ -30,8 +30,8 @@ Local:
 
 Run the setup script. This uses the Confluent Hub client to download the latest version of the 
 https://www.confluent.io/hub/wepay/kafka-connect-bigquery[Google Big Query 
-Sink] (1.1.2) and the 
-https://www.confluent.io/hub/jcustenborder/kafka-connect-spooldir[SpoolDir Source] (1.0.41). 
+Sink] (1.3.0) and the 
+https://www.confluent.io/hub/jcustenborder/kafka-connect-spooldir[SpoolDir Source] (2.0.43). 
 
 [source,bash]
 ----
