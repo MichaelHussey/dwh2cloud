@@ -158,7 +158,7 @@ services:
      - POSTGRES_USER=postgres
      - POSTGRES_PASSWORD=postgres
     volumes:
-     - ./customers.sql:/docker-entrypoint-initdb.d/z99_dump.sql
+     - ./orders.sql:/docker-entrypoint-initdb.d/z99_dump.sql
 
   ksql-cli:
     image: confluentinc/cp-ksql-cli:5.4.0
