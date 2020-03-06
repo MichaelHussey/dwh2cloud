@@ -32,5 +32,16 @@ then
 	export FILE_PATTERN="^.*.csv$"
 fi
 
+if [ -z "$1" ]; then
+	echo "Making sure that we have a header file for when the connector starts"
+	export in_file=`dirname $0`/..$IN_DIR/sales_data_header.csv
+	export fin_file=`dirname $0`/..$FIN_DIR/sales_data_header.csv
+	if [ -f "$in_file" ]; then
+		echo "$in_file already exists!"
+	else
+		echo "Moving $fin_file into place"
+		mv $fin_file $in_file
+	fi
+fi
 
 `dirname $0`/invoke_connect_rest.sh	$@
