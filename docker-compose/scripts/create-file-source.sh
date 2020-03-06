@@ -1,30 +1,36 @@
 #/bin/bash
-if [ "$1" = "-d" ]
+
+# The name of this connector
+if [ -z "$CONNECTOR_NAME" ]
 then
-	URL=connectors/orders-source-connector
-	METHOD=DELETE
-	curl -i -X $METHOD \
-	    -H "Accept:application/json" \
-	    -H  "Content-Type:application/json" \
-	    http://localhost:8083/$URL
-else
-if [ "$1" = "-v" ]
-	then
-		URL=connector-plugins/SpoolDirCsvSourceConnector/config/validate
-		METHOD=PUT
-		
-		curl -i -X $METHOD \
-		    -H "Accept:application/json" \
-		    -H  "Content-Type:application/json" \
-		    http://localhost:8083/$URL --data-binary "@$PWD/config/orders_file_source.properties"
-	else
-		URL=connectors/
-		METHOD=POST
-		
-		curl -i -X $METHOD \
-		    -H "Accept:application/json" \
-		    -H  "Content-Type:application/json" \
-		    http://localhost:8083/$URL --data-binary "@$PWD/config/orders_file_source.properties"
-	fi
+	export CONNECTOR_NAME="file-source-connector"
 fi
-	
+
+export template="`dirname $0`/../templates/file_source.properties"
+export CONNECTOR_TYPE="com.github.jcustenborder.kafka.connect.spooldir.SpoolDirCsvSourceConnector"
+
+# Specific parameters needed by this connector
+if [ -z "$OUTPUT_TOPIC" ]
+then
+	echo "Please set OUTPUT_TOPIC env variable"
+	exit -1
+fi
+if [ -z "$IN_DIR" ]
+then
+	export IN_DIR="/data/in"
+fi
+if [ -z "$ERR_DIR" ]
+then
+	export ERR_DIR="/data/err"
+fi
+if [ -z "$FIN_DIR" ]
+then
+	export FIN_DIR="/data/fin"
+fi
+if [ -z "$FILE_PATTERN" ]
+then
+	export FILE_PATTERN="^.*.csv$"
+fi
+
+
+`dirname $0`/invoke_connect_rest.sh	$@
